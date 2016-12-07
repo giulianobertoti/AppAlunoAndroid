@@ -17,6 +17,7 @@ public class Question extends AppCompatActivity {
     ArrayList<String> perguntas=new ArrayList<>();
 
     int i = 0;
+    int value=0;
     ImageView img;
 
     @Override
@@ -24,6 +25,16 @@ public class Question extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question);
+
+       /* Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        if (extras != null) {
+            if (extras.containsKey("key")) {
+                value = Integer.parseInt(extras.getString("key")); //if it's a string you stored
+            }
+        }*/
+
+
         perguntas.add("Pergunta1");
         perguntas.add("Pergunta2");
         perguntas.add("Pergunta3");
@@ -33,8 +44,7 @@ public class Question extends AppCompatActivity {
         perguntas.add("Pergunta7");
         perguntas.add("Pergunta8");
 
-
-       i= setQuestion(i);
+        setQuestion();
        /*img =(ImageView) findViewById(R.id.cenas);
 
         Bitmap scene;
@@ -58,7 +68,7 @@ public class Question extends AppCompatActivity {
 
 
 
-    public int setQuestion(int var) {
+    public void setQuestion( ) {
 
         TextView text = (TextView) findViewById(R.id.editText1);
         Button bt01 = (Button) findViewById(R.id.button);
@@ -67,15 +77,18 @@ public class Question extends AppCompatActivity {
         Button bt04 = (Button) findViewById(R.id.button4);
 
         text.setText("Selecione ");
-        bt01.setText(perguntas.get(var++));
-        bt02.setText(perguntas.get(var++));
-        bt03.setText(perguntas.get(var++));
-        bt04.setText(perguntas.get(var++));
-        return var;
+        bt01.setText(perguntas.get(value++));
+        bt02.setText(perguntas.get(value++));
+        bt03.setText(perguntas.get(value++));
+        bt04.setText(perguntas.get(value++));
+
     }
      public void valida(View v)
     {
         startActivity(new Intent(this,Scene.class));
+        /*Intent myIntent = new Intent(Question.this, Scene.class);
+        myIntent.putExtra("key", value); //Optional parameters\
+        Question.this.startActivity(myIntent);*/
     }
 
 }
